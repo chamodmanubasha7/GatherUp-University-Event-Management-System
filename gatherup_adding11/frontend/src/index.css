@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply min-h-screen bg-clay-bg text-clay-ink antialiased;
+    background-image:
+      radial-gradient(ellipse 90% 60% at 10% -10%, rgba(124, 58, 237, 0.08), transparent),
+      radial-gradient(ellipse 70% 50% at 100% 0%, rgba(16, 185, 129, 0.06), transparent),
+      radial-gradient(ellipse 50% 40% at 50% 100%, rgba(249, 115, 22, 0.05), transparent);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-2xl border border-clay-border/70 bg-clay-surface text-clay-ink shadow-clay transition duration-300 ease-out;
+  }
+  .glass-card:hover {
+    @apply border-clay-border shadow-clay-lg;
+  }
+
+  .glass-card-interactive {
+    @apply rounded-2xl border border-clay-border/70 bg-clay-surface text-clay-ink shadow-clay transition duration-300 ease-out;
+    @apply hover:-translate-y-1 hover:border-clay-border hover:shadow-clay-glow;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full border border-clay-primary-dark/20 bg-gradient-to-r from-clay-primary to-clay-primary-dark px-6 py-2.5 text-sm font-semibold text-white shadow-clay transition duration-200 hover:-translate-y-0.5 hover:shadow-clay-glow active:translate-y-0 active:shadow-clay;
+    @apply disabled:pointer-events-none disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-clay;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border-2 border-clay-secondary/70 bg-clay-surface px-6 py-2.5 text-sm font-semibold text-clay-ink shadow-sm transition duration-200;
+    @apply hover:-translate-y-0.5 hover:border-clay-secondary hover:bg-clay-peach/35 hover:shadow-clay active:translate-y-0;
+    @apply disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .input-field {
+    @apply w-full rounded-2xl border border-clay-border bg-clay-surface px-4 py-2.5 text-sm text-clay-ink shadow-clay-inset outline-none transition;
+    @apply placeholder:text-clay-subtle focus:border-clay-primary focus:shadow-clay focus:ring-2 focus:ring-clay-primary/20;
+  }
+
+  .label {
+    @apply mb-1 block text-xs font-semibold uppercase tracking-wider text-clay-muted;
+  }
+
+  .input-error {
+    @apply border-red-500 bg-red-50/30 focus:border-red-600 focus:ring-red-500/20;
+  }
+
+  .error-text {
+    @apply mt-1.5 flex items-center gap-1.5 text-[11px] font-medium text-red-600;
+    animation: errorFadeIn 0.2s ease-out;
+  }
+}
+
+@keyframes errorFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
